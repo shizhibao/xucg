@@ -49,7 +49,7 @@ static ucs_config_field_t ucg_builtin_config_table[] = {
     {"MEM_REG_OPT_CNT", "10", "Operation counter before registering the memory",
      ucs_offsetof(ucg_builtin_config_t, mem_reg_opt_cnt), UCS_CONFIG_TYPE_UINT},
 
-    {"MEM_REG_OPT_CNT", "3", "Operation counter before switching to one-sided sends",
+    {"MEM_RMA_OPT_CNT", "3", "Operation counter before switching to one-sided sends",
      ucs_offsetof(ucg_builtin_config_t, mem_rma_opt_cnt), UCS_CONFIG_TYPE_UINT},
 
     {"RESEND_TIMER_TICK", "100ms", "Resolution for (async) resend timer",
@@ -928,6 +928,6 @@ UCG_PLAN_COMPONENT_DEFINE(ucg_builtin_component, "builtin",
                           ucg_builtin_finalize, ucg_builtin_create,
                           ucg_builtin_destroy, ucg_builtin_plan,
                           ucg_builtin_op_create, ucg_builtin_op_trigger,
-                          ucg_builtin_op_discard, ucg_builtin_print,
-                          ucg_builtin_handle_fault, "BUILTIN_",
+                          ucg_builtin_op_progress, ucg_builtin_op_discard,
+                          ucg_builtin_print, ucg_builtin_handle_fault, "BUILTIN_",
                           ucg_builtin_config_table, ucg_builtin_config_t);

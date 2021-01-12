@@ -211,6 +211,7 @@ typedef struct ucg_builtin_op_step {
 
 struct ucg_builtin_op {
     ucg_op_t                 super;
+    ucg_builtin_op_step_t  **current; /**< points to the current step executed */
     unsigned                 opt_cnt; /**< optimization count-down */
     ucg_builtin_op_optm_cb_t optm_cb; /**< optimization function for the operation */
     ucg_builtin_op_init_cb_t init_cb; /**< Initialization function for the operation */
@@ -289,6 +290,8 @@ ucs_status_t ucg_builtin_am_handler(void *worker, void *data, size_t length,
 ucs_status_t ucg_builtin_op_create (ucg_plan_t *plan,
                                     const ucg_collective_params_t *params,
                                     ucg_op_t **op);
+
+unsigned     ucg_builtin_op_progress(ucg_coll_h op);
 
 void         ucg_builtin_op_discard(ucg_op_t *op);
 

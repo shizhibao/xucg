@@ -212,6 +212,11 @@ void ucg_group_destroy(ucg_group_h group)
     ucs_free(group);
 }
 
+ucg_collective_progress_t ucg_request_get_progress(ucg_coll_h coll)
+{
+    return ((ucg_op_t*)coll)->plan->planner->component->progress;
+}
+
 void ucg_request_cancel(ucg_coll_h coll)
 {
     // TODO: implement
